@@ -89,6 +89,7 @@ public class PacMan extends JPanel {
         pacmanLeftImage = new ImageIcon(getClass().getResource("./sprites/pacmanLeft.png")).getImage();
         pacmanRightImage = new ImageIcon(getClass().getResource("./sprites/pacmanRight.png")).getImage();
 
+        loadMap();
     }
 
     public void loadMap() {
