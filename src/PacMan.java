@@ -217,11 +217,17 @@ public class PacMan extends JPanel implements ActionListener, KeyListener {
         }
 
         for (Block ghost : ghosts) {
+            // TODO This is a temp fix, need to implement this properly.
+            if (ghost.y == tileSize * 9 && ghost.direction != 'U' && ghost.direction != 'D') {
+                ghost.updateDirection('U');
+            }
+
             ghost.x += ghost.velocityX;
             ghost.y += ghost.velocityY;
 
             for (Block wall : walls) {
-                if (collision(ghost, wall)) {
+                // TODO As above.
+                if (collision(ghost, wall) || ghost.x <= 0 || ghost.x + ghost.width >= boardWidth) {
                     ghost.x -= ghost.velocityX;
                     ghost.y -= ghost.velocityY;
                     char newDirection = directions[random.nextInt(4)];
